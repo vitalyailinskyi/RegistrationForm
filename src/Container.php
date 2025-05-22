@@ -42,10 +42,7 @@ class Container {
                 return new Validator();
 
             case UserController::class:
-                return new UserController(
-                    $this->get(RegistrationService::class),
-                    $this->get(Validator::class)
-                );
+                return new UserController($this->get(RegistrationService::class));
 
             default:
                 throw new Exception("Unknown class: $class");

@@ -13,7 +13,8 @@ class UserModel {
 
     public function __construct(protected Config $config, protected Connection $connection)
     {
-        $this->db = new Connection($config);
+//        $this->db = new Connection($config); // old version
+        $this->db = $connection; // injects connection to prevent creating new object while testing
     }
 
     public function createUser(string $name, string $email, string $password): bool

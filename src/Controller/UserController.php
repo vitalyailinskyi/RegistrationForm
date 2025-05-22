@@ -13,12 +13,10 @@ use Src\View;
 class UserController
 {
     private RegistrationService $registrationService;
-    private Validator $validator;
 
-    public function __construct(RegistrationService $registrationService, Validator $validator)
+    public function __construct(RegistrationService $registrationService)
     {
         $this->registrationService = $registrationService;
-        $this->validator = $validator;
     }
 
     public function register(array $data) : void
@@ -27,25 +25,21 @@ class UserController
 
         if(!$result['status']) {
             if(!empty($result['errors'])) {
-//                echo "Registration failed:\n";
                 $_SESSION['message'] = "Registration failed:\n";
                 if(is_array($result['errors'])) {
                     foreach($result['errors'] as $error) {
-//                        echo "$error\n";
                         $_SESSION['message'] .= "$error\n";
                         $_SESSION['message_type'] = 'error';
                         header('Location: /');
                         exit;
                     }
                 } else {
-//                    echo "{$result['errors']}\n";
                     $_SESSION['message'] .= "{$result['errors']}\n";
                     $_SESSION['message_type'] = 'error';
                     header('Location: /');
                     exit;
                 }
             } else {
-//                echo "Registration failed for unknown reasons.\n";
                 $_SESSION['message'] = "Registration failed for unknown reasons.\n";
                 $_SESSION['message_type'] = 'error';
                 header('Location: /');
@@ -54,7 +48,6 @@ class UserController
             return;
         }
 
-//        echo "User registered successfully!";
         $_SESSION['message'] = 'Registration successful!';
         $_SESSION['message_type'] = 'success';
         header('Location: /');

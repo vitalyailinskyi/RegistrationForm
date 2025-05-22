@@ -6,6 +6,11 @@
             "Src\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "vitalyailinskyi",
@@ -15,5 +20,8 @@
     "require": {
         "ext-pdo": "*",
         "vlucas/phpdotenv": "^5.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.5"
     }
 }
