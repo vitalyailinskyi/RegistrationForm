@@ -1,0 +1,19 @@
+{
+    "name": "vitalii/basic-registration",
+    "description": "First application for basic registration",
+    "autoload": {
+        "psr-4": {
+            "Src\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "vitalyailinskyi",
+            "email": "vitalii.ilinskyi@gmail.com"
+        }
+    ],
+    "require": {
+        "ext-pdo": "*",
+        "vlucas/phpdotenv": "^5.3"
+    }
+}
