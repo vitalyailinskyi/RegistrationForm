@@ -99,6 +99,18 @@ h6 {
     background: linear-gradient(45deg,rgba(184, 17, 81, 1) 0%, rgba(9, 9, 121, 1) 55%, rgba(0, 212, 255, 1) 100%);
 }
 
+.header {
+    color: white;
+    text-align: center;
+    font-weight: normal;
+    text-shadow: 0 0 2px rgba(0,0,0,0.5);
+    margin-bottom: 30px;
+    font-size: 32px;
+    text-transform: uppercase;
+    font-family: Roboto, sans-serif;
+    letter-spacing: 2px;
+}
+
 .form-container {
     flex-direction: column;
     position: relative;
@@ -120,54 +132,93 @@ h6 {
     backdrop-filter: brightness(60%);
 }
 
-.header {
-    color: white;
-    text-align: center;
-    font-weight: normal;
-    text-shadow: 0 0 2px rgba(0,0,0,0.5);
-    margin-bottom: 30px;
-    font-size: 32px;
-    text-transform: uppercase;
-    font-family: Roboto, sans-serif;
-    letter-spacing: 2px;
+.registration-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .registration-form {
-    flex-direction: column;
+    width: 100%;
+    height: 100%;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.fieldset-container {
+    height: calc(100% - 70px);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
     gap: 10px;
+    border-radius: 20px;
+    background-color: rgba(255,255,255,0.1);
+    border: 1px solid color-mix(in srgb, #ededed 10%, #1e1e1e);
 }
 
-.registration-form > label {
-    padding-left: 10px;
-    color: rgba(255,255,255,0.8);
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+.field-container {
+    width: 100%;
+    flex: 33.333%;
+    position: relative;
 }
 
-.registration-form > input,
-.registration-form > button {
-    height: 40px;
+.registration-form input,
+.registration-form button {
+    width: 100%;
     line-height: 40px;
     border-radius: 20px;
     border: none;
     color: white;
 }
 
-.registration-form > input {
-    background: rgba(255,255,255,0.3);
-    padding: 0 15px;
-    margin-bottom: 10px;
+.registration-form input {
+    padding: 30px 20px 15px;
+    height: 100%;
+    -webkit-transition: -webkit-transform 0.2s;
+    transition: -webkit-transform 0.2s;
+    transition: transform 0.2s;
+    border: 0;
+    outline: none;
+    font-size: 22px;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    width: 100%;
+    display: block;
+    background: rgba(255, 255, 255, 0);
 }
 
-.registration-form > input::placeholder {
+.registration-form label {
+    position: absolute;
+    left: 10px;
+    top: calc(50%);
+    transform: translate(0, -50%);
+    padding-left: 10px;
     color: rgba(255,255,255,0.8);
+    font-size: 18px;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: 2px;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+    pointer-events: none;
 }
 
-.registration-form > button {
+.field-container input:focus + label,
+.field-container input:valid + label,
+.field-container input:not(:placeholder-shown) + label {
+    top: 25%;
+    font-size: 14px;
+    color: color-mix(in srgb, #ededed 50%, #1e1e1e);
+}
+
+.registration-form button {
     background: rgb(45,126,231);
-    /*padding: 0 15px;*/
+    height: 40px;
     margin-bottom: 0;
     font-family: Roboto,sans-serif;
     font-size: 18px;

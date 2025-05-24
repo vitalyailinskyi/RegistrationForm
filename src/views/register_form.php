@@ -11,32 +11,43 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
 </head>
 <body>
-    <div class="container">
-        <div class="form-container">
-            <div class="registration">
+<div class="container">
+    <div class="form-container">
+        <div class="registration">
+            <div class="registration-container">
                 <h1 class="header">Registration</h1>
                 <form class="registration-form" method="POST" action="/BasicRegistration/public/register">
-                    <label for="name">Username</label>
-                    <input type="text" name="name" placeholder="Name" id="name">
-                    <label for="email">E-mail</label>
-                    <input type="email" name="email" id="email" placeholder="Email">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password" placeholder="Password"><br>
+                    <fieldset class="fieldset-container">
+                        <div class="field-container">
+                            <input type="text" name="name" id="name" required minlength="3" placeholder=" ">
+                            <label for="name">Username</label>
+                        </div>
+                        <div class="field-container">
+                            <input type="email" name="email" id="email" placeholder=" " required pattern="^[\w.+\-]+@.+\..+$">
+                            <label for="email">E-mail</label>
+                        </div>
+                        <div class="field-container">
+                            <input type="password" name="password" id="password" placeholder=" " required>
+                            <label for="password">Password</label>
+                        </div>
+                    </fieldset>
                     <button type="submit">Register</button>
                 </form>
-                <div class="popup-container">
-                    <?php if (!empty($_SESSION['message'])): ?>
-                        <div class="popup <?= $_SESSION['message_type'] ?>">
-                            <?= htmlspecialchars($_SESSION['message']) ?>
-                        </div>
-                        <?php unset($_SESSION['message'], $_SESSION['message_type']); ?>
-                    <?php endif; ?>
-                </div>
             </div>
 
+            <div class="popup-container">
+                <?php if (!empty($_SESSION['message'])): ?>
+                    <div class="popup <?= $_SESSION['message_type'] ?>">
+                        <?= htmlspecialchars($_SESSION['message']) ?>
+                    </div>
+                    <?php unset($_SESSION['message'], $_SESSION['message_type']); ?>
+                <?php endif; ?>
+            </div>
         </div>
-    </div>
 
-    <script type="text/javascript" src="../js/popup.js"></script>
+    </div>
+</div>
+
+<script type="text/javascript" src="../js/popup.js"></script>
 </body>
 </html>
