@@ -5,7 +5,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width"/>
     <title>Registration</title>
-    <link rel="stylesheet" href="../css/index.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/index.css" type="text/css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
@@ -16,7 +16,7 @@
         <div class="registration">
             <div class="registration-container">
                 <h1 class="header">Registration</h1>
-                <form class="registration-form" method="POST" action="/BasicRegistration/public/register">
+                <form class="registration-form" id="registration_form" action="#" method="POST">
                     <fieldset class="fieldset-container">
                         <div class="field-container">
                             <input type="text" name="name" id="name" required minlength="3" placeholder=" ">
@@ -36,18 +36,13 @@
             </div>
 
             <div class="popup-container">
-                <?php if (!empty($_SESSION['message'])): ?>
-                    <div class="popup <?= $_SESSION['message_type'] ?>">
-                        <?= htmlspecialchars($_SESSION['message']) ?>
-                    </div>
-                    <?php unset($_SESSION['message'], $_SESSION['message_type']); ?>
-                <?php endif; ?>
+                <div class="popup"></div>
             </div>
         </div>
 
     </div>
 </div>
 
-<script type="text/javascript" src="../js/popup.js"></script>
+<script type="text/javascript" src="/js/ajax-submit-request.js"></script>
 </body>
 </html>

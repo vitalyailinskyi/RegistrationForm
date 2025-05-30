@@ -8,13 +8,13 @@ use Src\Model\UserModel;
 use Src\Service\RegistrationService;
 use Src\Validation\Validator;
 use Src\Database\Connection;
-use Src\Config;
 
 class Container {
     private array $instances = [];
 
     public function get(string $class)
     {
+
         if (!isset($this->instances[$class])) {
             $this->instances[$class] = $this->create($class);
         }

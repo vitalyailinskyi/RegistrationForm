@@ -3,8 +3,6 @@
 namespace Tests\unit;
 
 use PHPUnit\Framework\TestCase;
-use Src\Config;
-use Src\Database\Connection;
 use Src\Model\UserModel;
 use Src\Service\RegistrationService;
 use Src\Validation\Validator;

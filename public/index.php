@@ -27,12 +27,20 @@ $route = str_replace($basePath, '', $uri);
 if ($route === '/' && $method === 'GET') {
     $controller->showRegistrationForm();
 } elseif ($route === '/register' && $method === 'POST') {
-    $data = [
-        'name' => $_POST['name'] ?? '',
-        'email' => $_POST['email'] ?? '',
-        'password' => $_POST['password'] ?? ''
-    ];
-    $controller->register($data);
+    // Check if it is JSON (AJAX) request
+    $isJson = strpos($_SERVER['CONTENT_TYPE'] ?? '', 'application/json') !== false;
+
+    if($isJson) {
+        $rawData = file_get_contents('php://input');
+        $data = json_decode($rawData, true); // associative array
+    } else {
+        $data = [
+            'name' => $_POST['name'] ?? '',
+            'email' => $_POST['email'] ?? '',
+            'password' => $_POST['password'] ?? ''
+        ];
+    }
+    $controller->register($data, $isJson);
 } else {
     http_response_code(404);
     echo "404 Not Found. Routing: $method $route";
