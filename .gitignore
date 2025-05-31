@@ -4,3 +4,6 @@ node_modules/
 docker-compose.override.yml
 .idea/
 storage/
+.phpunit.cache/
+phpunit.xml.bak
+.phpunit.result.cache
